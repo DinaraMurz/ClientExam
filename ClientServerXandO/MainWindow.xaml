@@ -1,0 +1,101 @@
+﻿<Window x:Class="ClientServerXandO.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientServerXandO"
+        mc:Ignorable="d"
+    Title="MainWindow" Height="400" Width="400" ResizeMode="NoResize">
+    <Grid>
+
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Bottom"
+                    Background="#FF8C80B4">
+                <Button Click="Restart_Click"
+                    Content="Restart"
+                    FontSize="20"
+                    Height="50"
+                    Width="100"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Background="#FFF0F0F0" />
+            </StackPanel>
+            <Border BorderBrush="White"
+                BorderThickness="5">
+                <Grid x:Name="MyGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33*" />
+                        <RowDefinition Height="33*" />
+                        <RowDefinition Height="33*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                        <ColumnDefinition Width="33*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="BorderBrush"
+                                Value="#FF423277" />
+                            <Setter Property="FontSize" Value="30"/>
+                        </Style>
+
+                        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+                    </Grid.Resources>
+                    <Button x:Name="TopXLeft"
+                        Click="Button_Click"
+                        Grid.Row="0"
+                        Grid.Column="0"/>
+                    <Button Grid.Row="0"
+                        Grid.Column="1"
+                        x:Name="TopXMiddle"
+                        Click="Button_Click"/>
+                    <Button Grid.Row="0"
+                        Grid.Column="2"
+                        x:Name="TopXRight"
+                        Click="Button_Click"/>
+                    <Button x:Name="CenterXLeft"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Click="Button_Click"/>
+                    <Button x:Name="CenterXMiddle"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Click="Button_Click"/>
+                    <Button x:Name="CenterXRight"
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Click="Button_Click"/>
+                    <Button x:Name="BottomXLeft"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Click="Button_Click" />
+                    <Button x:Name="BottomXMiddle"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        Click="Button_Click" />
+                    <Button x:Name="BottomXRight"
+                        Grid.Row="2"
+                        Grid.Column="2"
+                        Click="Button_Click"/>
+
+                    <Label Grid.Row="1"
+                       Grid.ColumnSpan="3"
+                       Background="#FF8C80B4"
+                       Foreground="WhiteSmoke"
+                       Content="Game Won"
+                       FontSize="30"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       Visibility="{Binding Path=HasWon, Converter={StaticResource BoolToVisibility}}">
+                    </Label>
+
+                </Grid>
+            </Border>
+        </DockPanel>
+
+        <TextBox Name="nameTextBox" HorizontalAlignment="Left" Height="33" Margin="274,338,0,0" TextWrapping="Wrap" Text="Введите имя" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>
